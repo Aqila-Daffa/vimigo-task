@@ -24,4 +24,6 @@ Route::get("student", [StudentController::class, 'getStudentData']);
 
 Route::post("staff-register", [StaffController::class, 'register']);
 Route::post("staff-login", [StaffController::class, 'login']);
+Route::post("staff-logout", [StaffController::class, 'logout']);
+Route::get("staff-search/{student}", [StudentController::class, 'search']);
 

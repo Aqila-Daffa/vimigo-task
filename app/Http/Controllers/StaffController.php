@@ -21,7 +21,8 @@ class StaffController extends Controller
         
         $val['password'] = Hash::make($val['password']);
 
-        User::create($val);
+        $user = User::create($val);
+        $token['token'] =  $user->createToken('auth_token')->accessToken;
         return 'User register successfully.';
 
         
@@ -36,10 +37,22 @@ class StaffController extends Controller
         
  
         if (Auth::attempt($cred)) {
-            $stud = Student::select('name', 'address')->get();
+            Auth::user()->createToken('auth_token')->accessToken;
+
+            $stud = Student::select('name', 'address')->paginate(10);
             return $stud;
         }else{
             return 'Login Failed, Please try again!';
         }  
+     }
+
+     public function logout(Request $request){
+        Auth::logout();
+ 
+        $request->session()->invalidate();
+     
+        $request->session()->regenerateToken();
+     
+        return 'You have logged out!';
      }
 }

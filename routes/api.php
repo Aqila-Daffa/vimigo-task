@@ -16,14 +16,15 @@ use App\Http\Controllers\StaffController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
 Route::get("student", [StudentController::class, 'getStudentData']);
+Route::get("search/{student}", [StudentController::class, 'search']);
 
 Route::post("staff-register", [StaffController::class, 'register']);
-Route::post("staff-login", [StaffController::class, 'login']);
+Route::post("staff-login", [StaffController::class, 'login'])->name('login');
 Route::post("staff-logout", [StaffController::class, 'logout']);
-Route::get("staff-search/{student}", [StudentController::class, 'search']);
-
+Route::post("staff-search", [StaffController::class, 'search']);
+ 

@@ -28,6 +28,5 @@ Route::post("staff-register", [StaffController::class, 'register']);
 Route::post("staff-login", [StaffController::class, 'login'])->name('login');
 Route::post("staff-logout", [StaffController::class, 'logout']);
 Route::post("staff-search", [StaffController::class, 'search']);
-
-Route::post("staff-edit-student", [FileController::class, 'upload']);
+Route::post("staff-upload-student", [FileController::class, 'upload']);
  

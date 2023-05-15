@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,6 @@ Route::post("staff-register", [StaffController::class, 'register']);
 Route::post("staff-login", [StaffController::class, 'login'])->name('login');
 Route::post("staff-logout", [StaffController::class, 'logout']);
 Route::post("staff-search", [StaffController::class, 'search']);
+
+Route::post("staff-edit-student", [FileController::class, 'upload']);
  
